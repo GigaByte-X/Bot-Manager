@@ -1,0 +1,32 @@
+const {
+    SlashCommandBuilder,
+    CommandInteraction,
+    PermissionFlagsBits,
+    Client,
+    ActionRowBuilder, 
+    ButtonStyle,
+    ButtonBuilder
+} = require("discord.js");
+
+module.exports = {
+    data: new SlashCommandBuilder()
+        .setName("help")
+        .setDescription("help - commands"),
+        
+    /**
+     * @param {Client} client
+     * @param {CommandInteraction} interaction
+     */
+    execute(interaction, client) { 
+        const row = new ActionRowBuilder()
+        .addComponents(
+            new ButtonBuilder()
+                .setCustomId('category')
+                .setLabel('Categories!')
+                .setEmoji('🔶')
+                .setStyle(ButtonStyle.Primary),
+                
+        );
+        interaction.reply({ content: 'I think you should,', components: [row] });
+    },
+};
